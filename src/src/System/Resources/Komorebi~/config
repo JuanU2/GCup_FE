@@ -1,0 +1,23 @@
+[Info]
+WallpaperType=video
+VideoFileName=Mountains No Copyright Video Peak Copyright Free Videos Hills Free Stock Video Free Footage.mp4
+
+[DateTime]
+Visible=true
+Parallax=false
+MarginTop=0
+MarginRight=0
+MarginLeft=25
+MarginBottom=0
+RotationX=0
+RotationY=0
+RotationZ=0
+Position=center_left
+Alignment=center
+AlwaysOnTop=true
+Color=#dd22dd22dd22
+Alpha=255
+ShadowColor=#dd22dd22dd22
+ShadowAlpha=255
+TimeFont=Lato Light 30
+DateFont=Lato Light 20
