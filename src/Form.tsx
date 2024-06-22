@@ -3,8 +3,7 @@ import './Form.css';
 
 const Form = () => {
   const { register, handleSubmit } = useForm();
-
-  const onSubmit = data => {
+  const onSubmit = (data: any) => {
     const jsonData = {
       meno: data.name,
       priezvisko: data.surname,
@@ -12,7 +11,7 @@ const Form = () => {
       cislo: data.startingNumber,
     };
 
-    fetch('http://localhost:3000', {
+    fetch('http://95.102.110.92:3000', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
