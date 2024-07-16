@@ -1,14 +1,14 @@
-import Form from './Form'
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
+import Home from './pages/Home'
+import Registration from './pages/Registration'
 
 function App() {
   return (
-    <div className='app-container'>
-        <h1>
-            Registrácia Gessayov cup
-        </h1>
-    <   Form/>
-    </div>
+    <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/registracia" element={<Registration />} />
+    </Routes>
   )
 }
 
