@@ -2,7 +2,6 @@ import MenuButton from '../images/menu.svg'
 import Icon from '../images/icon.svg'
 import './NavBar.css'
 import { Link } from 'react-router-dom';
-import React from 'react'
 
 export function toggleMenu() {
     const menu = document.querySelector('.navbar__options');
