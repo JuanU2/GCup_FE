@@ -1,5 +1,5 @@
 import NavBar from "../components/NavBar";
-import routes from "../routes";
+//import routes from "../routes";
 import "./Home.css"
 import bikers1 from "../assets/images/image__bikers1.jpg"
 import bikers2 from "../assets/images/image__bikers2.jpg"
@@ -7,8 +7,9 @@ import bikers3 from "../assets/images/image__bikers3.jpg"
 
 export default function Home() {
   return (
+    <>
+    <NavBar/>
     <div className="home-page">
-        <NavBar options={routes}/>
         <div className="home-page__intro">
             <h1 className="home-page__intro__headline">
                 Príďte si zabicyklovať aj vy!
@@ -37,5 +38,6 @@ export default function Home() {
             </div>
         </div>
     </div>
+    </>
   )
 }
