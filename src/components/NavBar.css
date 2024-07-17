@@ -1,5 +1,6 @@
 .navbar {
     background-color: rgb(181, 233, 233);
+    max-height: min-content;
 }
 
 .navbar__bar {
@@ -22,11 +23,11 @@
 }
 
 .navbar__headline__icon {
-    height: 7rem;
+    height: 3rem;
 }
 
 .navbar__menu-button {
-    max-width: 5rem;
+    max-width: 3rem;
     padding: 1rem;
 }
 
@@ -75,6 +76,11 @@
     .navbar__menu__option {
         text-decoration: none;
     }
+
+    .navbar__headline__icon {
+        height: 5rem;
+    }
+    
     .navbar__menu__option:hover {
         color: rgb(24, 60, 158);
     }

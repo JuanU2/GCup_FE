@@ -1,3 +1,7 @@
+:root {
+    --main-bg-color: rgba(6, 41, 41, 0.801);
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;

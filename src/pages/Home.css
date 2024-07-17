@@ -1,0 +1,10 @@
+.home-page {
+    background-color: var(--main-bg-color);
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.home-page__intro {
+    color: white;
+}

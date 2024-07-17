@@ -6,6 +6,7 @@ export default function Registration() {
   return (
     <div>
         <NavBar options={routes}/>
+        
     </div>
   )
 }

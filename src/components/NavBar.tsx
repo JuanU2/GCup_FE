@@ -10,7 +10,6 @@ export function toggleMenu() {
 
 export default function NavBar(props: {options?: {name: string, ref: string}[]}) {
   return (
-    <>
     <nav className="navbar">
         <div className='navbar__bar'>
             <Link to='/' className="navbar__headline">
@@ -25,6 +24,5 @@ export default function NavBar(props: {options?: {name: string, ref: string}[]})
             {props.options?.map(option => <Link to={option.ref} key={option.name} className="navbar__menu__option">{option.name}</Link>)}
         </div>
     </nav>
-    </>
   )
 }
