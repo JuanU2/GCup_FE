@@ -1,12 +1,11 @@
-import MenuButton from "../assets/images/menu.svg";
 import Icon from "../assets/images/icon.svg";
 //import './NavBar.css'
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import { useState } from "react";
-
-export default function NavBar(props: {
-  options?: { name: string; ref: string }[];
-}) {
+//props: {
+//    options?: { name: string; ref: string }[];
+//}
+export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
