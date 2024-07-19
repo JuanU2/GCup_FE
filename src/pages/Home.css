@@ -1,10 +1,65 @@
 .home-page {
-    background-color: var(--main-bg-color);
     height: 100%;
     width: 100%;
     min-height: 100vh;
+    padding: 1rem;
+    padding-top: 3rem;
 }
 
-.home-page__intro {
-    color: white;
+.intro__home-image {
+    width: 80%;
+    border-radius: 1rem;
+}
+
+.intro__image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-page__intro__headline {
+    font-size: 2rem;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.home-page__intro__text {
+    display: none;
+}
+
+.intro__text-container h2 {
+    font-size: 2rem;
+    padding: 2rem;
+    font-weight: bold;
+}
+
+.intro__text-container {
+    font-size: 1.2rem;
+    text-align: center;
+    width: 80%;
+    padding: 5rem;
+}
+
+.home__i-want-you__container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 3rem;
+}
+
+.home__i-want-you {
+    border: black solid 0.5rem;
+}
+
+@media screen and (min-width: 1024px) {
+    .home-page__intro__headline {
+        font-size: 4rem;
+    }
+    .home-page {
+        padding: 6rem;
+    }
+    .home-page__intro__text {
+        display: grid;
+    }
 }

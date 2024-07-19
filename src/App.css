@@ -1,5 +1,6 @@
 :root {
     --main-bg-color: rgba(6, 41, 41, 0.801);
+    --radix-accordion-content-height: 100%;
 }
 
 body {
