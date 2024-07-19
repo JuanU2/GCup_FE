@@ -8,7 +8,7 @@ export default function Caroussel() {
     const [current, setCurrent] = useState(0);
     useEffect(() => {
         const interval = setInterval(() => {
-          setCurrent(prevCount => prevCount + 1);
+          setCurrent(prevCount => (prevCount + 1) % 3);
         }, 10000);
     
         return () => clearInterval(interval); // Cleanup interval on component unmount
