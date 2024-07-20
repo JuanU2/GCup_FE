@@ -17,6 +17,13 @@
     align-items: center;
 }
 
+.carousel__home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .home-page__intro__headline {
     font-size: 2rem;
     width: 100%;

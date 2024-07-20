@@ -1,5 +1,4 @@
 .caroussel--height {
-    min-height: 50svh;
     height: 50svh;
     text-align: center;
 }
@@ -10,7 +9,6 @@
 
 @media screen and (min-width: 768px) {
     .caroussel--height {
-        min-height: 80svh;
         height: 80svh;
     }
 }
