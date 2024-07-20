@@ -75,7 +75,7 @@ export default function Home() {
               <CarouselContent>
                 <CarouselItem>
                   <div className="p-1">
-                    <Card>
+                    <Card className="carousel__card">
                       <CardContent className="flex aspect-square items-center justify-center p-6">
                         <div className="block w-full text-center">
                           <h2 className="caroussel--headline">
@@ -101,7 +101,7 @@ export default function Home() {
                 </CarouselItem>
                 <CarouselItem>
                   <div className="p-1">
-                    <Card>
+                    <Card className="carousel__card">
                       <CardContent className="flex aspect-square items-center justify-center p-6">
                         <div className="block w-full">
                           <h2 className="caroussel--headline">
@@ -124,7 +124,7 @@ export default function Home() {
                 </CarouselItem>
                 <CarouselItem>
                   <div className="p-1">
-                    <Card>
+                    <Card className="carousel__card">
                       <CardContent className="flex aspect-square items-center justify-center p-6">
                         <div className="block w-full">
                           <h2 className="caroussel--headline">
