@@ -60,6 +60,9 @@
 }
 
 @media screen and (min-width: 1024px) {
+    .carousel__home {
+        display: none;
+    }
     .home-page__intro__headline {
         font-size: 4rem;
     }
