@@ -1,0 +1,15 @@
+.admin-form {
+    width: 60%;
+    max-width: 400px;
+}
+
+.admin-page {
+    min-height: 100vh;
+}
+
+.admin-form__container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}

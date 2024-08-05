@@ -1,4 +1,4 @@
-.registration-page {
+.race-new {
     height: 100%;
     width: 100%;
     min-height: 100vh;
@@ -7,9 +7,4 @@
     justify-content: top;
     align-items: center;
     padding: 3rem;
-}
-
-.registration-form {
-    width: 80%;
-    max-width: 600px;
 }

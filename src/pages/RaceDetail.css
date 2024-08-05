@@ -1,0 +1,25 @@
+.race-detail {
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.tables__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    gap: 3rem;
+}
+
+.table--container {
+    width: 90%;
+}
+
+@media screen and (min-width: 1024px) {
+    .table--container {
+        width: 70%;
+    }
+}

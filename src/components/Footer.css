@@ -1,0 +1,16 @@
+.footer__link {
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem;
+}
+
+.footer-container {
+    padding: 1rem;
+    background-color: white;
+}
+
+.footer__line {
+    width: 100%;
+    text-align: center;
+    padding: 2rem;
+}

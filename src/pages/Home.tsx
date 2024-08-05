@@ -13,6 +13,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../@/components/ui/carousel";
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
@@ -153,6 +154,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
