@@ -8,10 +8,7 @@ export default function Footer() {
                 <Link to="/registracia" className="footer__link">Registrácia</Link>
             </span>
             <span className="footer__link">
-                <Link to="/pretek" className="footer__link">Výpis účastníkov</Link>
-            </span>
-            <span className="footer__link">
-                <Link to="/vysledky" className="footer__link">Výsledky</Link>
+                <Link to="/" className="footer__link">Domov</Link>
             </span>
             <span  className="footer__link">
                 <Link to="/admin" className="footer__link">Administrácia</Link>

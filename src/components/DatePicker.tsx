@@ -25,7 +25,8 @@ import {
   PopoverTrigger,
 } from "../@/components/ui/popover"
 import { useNavigate } from "react-router-dom"
-import { useRaceCreate } from "../hooks/race"
+import { useRaceCreate, useGetAllRaces } from "../hooks/race"
+import { Spinner } from "flowbite-react"
 
 const FormSchema = z.object({
   raceDate: z.date({
@@ -34,9 +35,11 @@ const FormSchema = z.object({
 })
 
 export function DatePickerForm() {
+    const {isLoading, data: races} = useGetAllRaces()
     const {mutateAsync: createRace} = useRaceCreate()
     const navigate = useNavigate()
-    
+    const today = new Date()
+    today.setHours(0, 0, 0, 0)
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   })
@@ -52,6 +55,8 @@ export function DatePickerForm() {
     }
 
   return (
+    <>
+    { isLoading ? <Spinner /> : (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
@@ -85,9 +90,8 @@ export function DatePickerForm() {
                     selected={field.value}
                     onSelect={field.onChange}
                     locale={sk}
-                    disabled={(date) =>
-                        date < new Date("1900-01-01")
-                    }
+                    disabled={(date) => races.slice().map((r: any) => r.year).includes(date.getFullYear().toString()) 
+                        || (date < today) }
                   />
                 </PopoverContent>
               </Popover>
@@ -97,6 +101,7 @@ export function DatePickerForm() {
         />
         <Button type="submit">Vytvoriť pretek</Button>
       </form>
-    </Form>
+    </Form>)}
+    </>
   )
 }

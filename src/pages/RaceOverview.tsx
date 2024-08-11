@@ -6,9 +6,12 @@ import { Spinner } from "flowbite-react";
 import { CalendarIcon } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
-import Footer from "../components/Footer"
-
-
+import Footer from "../components/Footer";
+import { TrashIcon } from "lucide-react";
+import useAuth from "../hooks/auth";
+import { useState } from "react";
+import { Button } from "../@/components/ui/button";
+import { useRaceDelete } from "../hooks/race";
 function ConvertToDateString(date: Date): string {
   return new Intl.DateTimeFormat("sk-Sk", {
     weekday: "short",
@@ -19,6 +22,11 @@ function ConvertToDateString(date: Date): string {
 }
 
 export default function RaceOverview() {
+  const [deletingYear, setDeletingYear]: any = useState(undefined);
+  const { isAuthenticated } = useAuth();
+  const { mutateAsync: deleteRace } = useRaceDelete()
+  const today = new Date()
+  today.setHours(0, 0, 0, 0)
   const { data: raceData, isLoading: racesLoading } = useQuery({
     queryKey: ["races"],
     queryFn: getMany,
@@ -34,9 +42,22 @@ export default function RaceOverview() {
           <Spinner size="xl" />
         ) : (
           raceData.map((race: any) => {
+            const raceDate = new Date(race.raceDate)
             const year = new Date(race.raceDate).getFullYear().toString();
             return (
               <Card className="flex flex-col w-fit p-6">
+                {isAuthenticated ? (
+                  <div className="flex justify-end">
+                    <button
+                      onClick={() => setDeletingYear(year)}
+                      className="border-black border-2 rounded hover:bg-red-500 bg-red-400 p-1"
+                    >
+                      <TrashIcon className="h-6 text-white" />
+                    </button>
+                  </div>
+                ) : (
+                  <></>
+                )}
                 <h1 className="text-center font-bold">Gessayov Cup {year}</h1>
                 <hr />
                 <div className="grid grid-cols-2 text-center content-center">
@@ -44,21 +65,42 @@ export default function RaceOverview() {
                   <section>
                     {ConvertToDateString(new Date(race.raceDate))}
                   </section>
-                  <div className="button-container">
-                    <Link to={"/pretek/" + year}>
-                      <button className="w-full bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
-                        Detail preteku
-                      </button>
-                    </Link>
-                  </div>
-                  <div className="button-container">
-                    <Link to={"/registracia/" + year}>
-                      <button className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        Registrovať sa
-                      </button>
-                    </Link>
+                  <div className="col-span-2 lg:flex">
+                    <div className="button-container">
+                      <Link to={"/pretek/" + year}>
+                        <Button className="w-full bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                          Detail preteku
+                        </Button>
+                      </Link>
+                    </div>
+                    <div className="button-container">
+                      <Link className={(raceDate < today) ? "hover:cursor-default" : ""} to={(raceDate < today)? "#" : "/registracia/" + year}>
+                        <Button disabled={ raceDate < today} className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                          Registrovať sa
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
+                {deletingYear ? (
+                  <div className="delete-form__container rounded-xl gap-6">
+                    <h1>
+                      Ste si istý že chcete vymazať pretek Gessayov Cup {year}?
+                    </h1>
+                    <h2>
+                        Táto akcia je nenávratná
+                    </h2>
+                    <div className="flex w-full justify-end align-center gap-6">
+                        <Button className="bg-gray-500 font-bold" onClick={() => setDeletingYear(undefined)}>Zrušiť</Button>
+                        <Button className="bg-red-500 font-bold" onClick={() => {
+                            deleteRace(year);
+                            setDeletingYear(undefined);
+                        }} >Potvrdiť</Button>
+                    </div>
+                  </div>
+                ) : (
+                  <></>
+                )}
               </Card>
             );
           })

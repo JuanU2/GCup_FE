@@ -14,6 +14,8 @@ import {
   CarouselPrevious,
 } from "../@/components/ui/carousel";
 import Footer from "../components/Footer";
+import { Button } from "../@/components/ui/button";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
@@ -152,6 +154,21 @@ export default function Home() {
               <CarouselNext />
             </Carousel>
           </div>
+        </div>
+        <div className="w-full p-12 flex flex-col justify-center gap-6">
+            <div className="bg-red-300 border-2 border-black rounded text-center p-6">
+                <h1>
+                    <strong className="font-bold text-xl">Pozor!</strong>
+                </h1>
+                <section>
+                    Osoby staršie ako 18 rokov platia za účasť na mieste štartovný poplatok <strong className="font-bold">5 €</strong> pri prevzatí štartovného čísla.
+                </section>
+            </div>
+            <div className="w-full flex justify-center">
+            <Link to="/registracia">
+                <Button className="font-bold text-white">Registrovať sa</Button>
+            </Link>
+            </div>
         </div>
       </div>
       <Footer />

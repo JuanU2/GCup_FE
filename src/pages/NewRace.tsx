@@ -7,6 +7,12 @@ export default function NewRace() {
     <>
     <NavBar/>
     <div className="race-new">
+        <h1 className="font-bold font-lg text-center p-6 text-2xl">
+            Nový pretek
+        </h1>
+        <h2 className="font-bold p-6">
+            V jednom roku môže byť vytvorený maximálne jeden pretek.
+        </h2>
         <DatePickerForm/>
     </div>
     <Footer/>

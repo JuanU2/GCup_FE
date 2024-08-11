@@ -11,3 +11,7 @@ export const getMany = async () => {
 export const getSingle = async (year: string) => {
     return (await apiClient.get(`/races/${year}`)).data
 }
+
+export const deleteSingle = async (year: string) => {
+    return (await apiClient.delete(`/races/${year}`)).data
+}
