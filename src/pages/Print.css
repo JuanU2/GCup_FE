@@ -1,0 +1,13 @@
+.print-page {
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.print-card {
+    transition: transform 0.3s ease-in-out
+}
+
+.print-card:hover {
+    transform: scale(1.05);
+}

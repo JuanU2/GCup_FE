@@ -1,7 +1,7 @@
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
-import { useParams } from "react-router-dom";
-import { Spinner } from "flowbite-react";
+import { Link, useParams } from "react-router-dom";
+import { Button, Spinner } from "flowbite-react";
 import { CalendarIcon } from "lucide-react";
 import "./RaceDetail.css";
 import StickyHeadTable from "../components/TableSticky"
@@ -30,6 +30,13 @@ export default function RaceDetail() {
                 day: "numeric",
               }).format(new Date(raceData.raceDate))
             )}
+          </section>
+          <section className="w-full flex justify-center align-center p-6">
+            <Link to={"/tlac/listina/" + year ?? ""}>
+                <Button className="bg-blue-400">
+                    Štartovacia/Výsledková listina
+                </Button>
+            </Link>
           </section>
           <h2 className="p-6 text-2xl text-center">
             Prihlásení cyklisti:
