@@ -26,7 +26,7 @@ import {
 } from "../@/components/ui/popover"
 import { useNavigate } from "react-router-dom"
 import { useRaceCreate, useGetAllRaces } from "../hooks/race"
-import { Spinner } from "flowbite-react"
+import Spinner from "../components/Spinner";
 
 const FormSchema = z.object({
   raceDate: z.date({
@@ -36,7 +36,7 @@ const FormSchema = z.object({
 
 export function DatePickerForm() {
     const {isLoading, data: races} = useGetAllRaces()
-    const {mutateAsync: createRace} = useRaceCreate()
+    const {mutateAsync: createRace, isPending: raceCreationLoading} = useRaceCreate()
     const navigate = useNavigate()
     const today = new Date()
     today.setHours(0, 0, 0, 0)
@@ -99,7 +99,7 @@ export function DatePickerForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Vytvoriť pretek</Button>
+        <Button disabled={raceCreationLoading} type="submit">{raceCreationLoading ? (<Spinner/>) : "Vytvoriť pretek"}</Button>
       </form>
     </Form>)}
     </>

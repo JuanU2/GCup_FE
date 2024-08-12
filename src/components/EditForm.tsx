@@ -15,6 +15,8 @@ import {
 import { Input } from "../@/components/ui/input";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { CyclistUpdate, update } from "../api/cyclistApi";
+import { Button } from "../@/components/ui/button";
+import Spinner from "./Spinner";
 
 const timeRegex = /^(?:\d|0\d|1\d|2[0-3]):[0-5]\d:[0-5]\d:\d{2}$/;
 
@@ -134,18 +136,19 @@ function EditForm(props: { editing: any; setEditing: any }) {
           />
           </div>
           <div className="flex gap-6 col-span-2 justify-center">
-            <button
-              className="bg-red-200 p-3 rounded hover:bg-red-300"
+            <Button
+              className="bg-red-400 p-3 rounded hover:bg-red-500"
               onClick={() => props.setEditing(undefined)}
             >
               <span>Zavrieť</span>
-            </button>
-            <button
+            </Button>
+            <Button
+              disabled={createMutation.isPending}
               type="submit"
-              className="bg-green-200 p-3 rounded hover:bg-green-300"
+              className="bg-green-500 p-3 rounded hover:bg-green-600"
             >
-              <span>Uložiť</span>
-            </button>
+              {createMutation.isPending ? <Spinner/> : <span>Uložiť</span>}
+            </Button>
           </div>
         </form>
       </Form>

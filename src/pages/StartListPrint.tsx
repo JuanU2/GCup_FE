@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 import { useGetRace } from "../hooks/race"
-import { Spinner } from "flowbite-react";
+import Spinner from "../components/Spinner";
 import { formatTime } from "../components/TableSticky";
 
 export default function StartListPrint() {
@@ -9,7 +9,7 @@ export default function StartListPrint() {
   return (
     <div className="w-full p-6 bg-white">
         {
-            isLoading ? <Spinner className="w-24" /> : 
+            isLoading ? <Spinner /> : 
             (
             <div  className="w-full grid grid-cols-6">
                 <div className="col-span-6 text-center">

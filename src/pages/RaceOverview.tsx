@@ -2,7 +2,7 @@ import { Card } from "../@/components/ui/card";
 import { getMany } from "../api/raceApi";
 import NavBar from "../components/NavBar";
 import "./RaceOverview.css";
-import { Spinner } from "flowbite-react";
+import Spinner from "../components/Spinner";
 import { CalendarIcon } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
@@ -24,7 +24,7 @@ function ConvertToDateString(date: Date): string {
 export default function RaceOverview() {
   const [deletingYear, setDeletingYear]: any = useState(undefined);
   const { isAuthenticated } = useAuth();
-  const { mutateAsync: deleteRace } = useRaceDelete()
+  const { mutateAsync: deleteRace, isPending } = useRaceDelete()
   const today = new Date()
   today.setHours(0, 0, 0, 0)
   const { data: raceData, isLoading: racesLoading } = useQuery({
@@ -39,7 +39,7 @@ export default function RaceOverview() {
       </h1>
       <div className="race-overview">
         {racesLoading ? (
-          <Spinner size="xl" />
+          <Spinner />
         ) : (
           raceData.map((race: any) => {
             const raceDate = new Date(race.raceDate)
@@ -92,10 +92,9 @@ export default function RaceOverview() {
                     </h2>
                     <div className="flex w-full justify-end align-center gap-6">
                         <Button className="bg-gray-500 font-bold" onClick={() => setDeletingYear(undefined)}>Zrušiť</Button>
-                        <Button className="bg-red-500 font-bold" onClick={() => {
-                            deleteRace(year);
-                            setDeletingYear(undefined);
-                        }} >Potvrdiť</Button>
+                        <Button disabled={isPending} className="bg-red-500 font-bold" onClick={() => {
+                            deleteRace(year).then(() => setDeletingYear(undefined));
+                        }} >{isPending ? <Spinner/> : "Potvrdiť"}</Button>
                     </div>
                   </div>
                 ) : (

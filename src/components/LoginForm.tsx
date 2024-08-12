@@ -18,6 +18,7 @@ import { useMutation } from "@tanstack/react-query"
 import { login } from "../api/adminApi"
 import useAuth from "../hooks/auth"
 import { useNavigate } from 'react-router-dom';
+import Spinner from "./Spinner"
 
 const formSchema = z.object({
   username: z.string(),
@@ -76,7 +77,7 @@ export function LoginForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Prihlásiť sa</Button>
+        <Button disabled={createMutation.isPending} type="submit">{createMutation.isPending? <Spinner/> : "Prihlásiť sa"}</Button>
       </form>
     </Form>
   )

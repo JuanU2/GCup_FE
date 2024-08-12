@@ -1,7 +1,8 @@
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import { Link, useParams } from "react-router-dom";
-import { Button, Spinner } from "flowbite-react";
+import { Button } from "flowbite-react";
+import Spinner from "../components/Spinner";
 import { CalendarIcon } from "lucide-react";
 import "./RaceDetail.css";
 import StickyHeadTable from "../components/TableSticky"
@@ -21,7 +22,7 @@ export default function RaceDetail() {
         <div className="detail__detail">
           <section className="font-bold text-center flex w-full justify-center gap-6">
              <CalendarIcon/> {isLoading ? (
-              <Spinner size="xl" />
+              <Spinner />
             ) : (
               new Intl.DateTimeFormat("sk-Sk", {
                 weekday: "short",
@@ -32,7 +33,7 @@ export default function RaceDetail() {
             )}
           </section>
           <section className="w-full flex justify-center align-center p-6">
-            <Link to={"/tlac/listina/" + year ?? ""}>
+            <Link to={"/tlac/listina/" + year}>
                 <Button className="bg-blue-400">
                     Štartovacia/Výsledková listina
                 </Button>

@@ -19,6 +19,7 @@ import { Input } from "../@/components/ui/input"
 import { useMutation } from "@tanstack/react-query"
 import { create } from "../api/cyclistApi"
 import MultiChoice from "./MultiChoice"
+import Spinner from "./Spinner"
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -117,7 +118,7 @@ export function Formular( props: {year: string} ) {
             </FormItem>
           )}
         />
-        <Button type="submit">Odoslať</Button>
+        <Button disabled={createMutation.isPending} type="submit">{createMutation.isPending? <Spinner/> : "Odoslať"}</Button>
       </form>
     </Form>
   )
