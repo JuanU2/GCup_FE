@@ -3,7 +3,8 @@ import "./Home.css";
 import bikers1 from "../assets/images/image__bikers1.jpg";
 import bikers2 from "../assets/images/image__bikers2.jpg";
 import bikers3 from "../assets/images/image__bikers3.jpg";
-import IWantYou from "../assets/images/i_want_you.jpg";
+import Logo from "../assets/images/icon.svg"
+import Trasa from "../assets/images/trasa.png"
 import { Card, CardContent } from "../@/components/ui/card";
 import "./Caroussel.css";
 import {
@@ -26,12 +27,19 @@ export default function Home() {
           <h1 className="home-page__intro__headline">
             Príďte si zabicyklovať aj vy!
           </h1>
-          <div className="home__i-want-you__container">
+          <div className="home__i-want-you__container flex-col lg:flex-row gap-12">
             <img
-              src={IWantYou}
+              src={Logo}
               className="home__i-want-you"
               alt="I Want YOU!"
             />
+            <a href="https://cyklotrasa.oma.sk/-2266490">
+            <img
+                src={Trasa}
+                className="trasa"
+                alt="Trasa"
+            />
+            </a>
           </div>
           <div className="home-page__intro__text grid grid-cols-2">
             <section className="intro__text-container">

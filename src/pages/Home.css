@@ -41,6 +41,11 @@
     font-weight: bold;
 }
 
+.trasa {
+    background-color: #555;
+    box-shadow: 0 0 5px 10px #555;
+}
+
 .intro__text-container {
     font-size: 1.2rem;
     text-align: center;
@@ -51,12 +56,8 @@
 .home__i-want-you__container {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     padding: 3rem;
-}
-
-.home__i-want-you {
-    border: black solid 0.5rem;
 }
 
 @media screen and (min-width: 1024px) {
