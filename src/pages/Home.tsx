@@ -18,7 +18,7 @@ export default function Home() {
         <h1 className="home-page__intro__headline">Gessayov Cup</h1>
         <div className="home__i-want-you__container flex-col lg:flex-row gap-12 flex flex-col items-center lg:flex-row">
           <div className="flex flex-col gap-6 align-center justify-center h-max lg:w-1/2">
-            <h2 className="lg:text-4xl text-center text-2xl">
+            <h2 className="lg:text-4xl text-center lg:text-left text-2xl">
               Príďte si zabicyklovať aj vy!
             </h2>
             <hr />
