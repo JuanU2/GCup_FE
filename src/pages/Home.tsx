@@ -155,7 +155,7 @@ export default function Home() {
           alt="hornozelenická ulica"
           className="rounded-xl"
         />
-        <div className="text-center lg:text-right flex flex-col divide-black gap-6 p-12">
+        <div className="text-center lg:text-right flex flex-col divide-black gap-6 p-6 lg:p-12">
           <h1 className="text-2xl font-bold lg:text-4xl">LOKALITA</h1>
           <hr />
           <p className="text-l lg:text-xl">
