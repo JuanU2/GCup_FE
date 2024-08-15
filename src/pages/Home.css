@@ -53,6 +53,16 @@
     padding: 5rem;
 }
 
+.home__cyclist__container__element {
+    background-color: #474545b9;
+}
+
+.home__cyclist__container {
+    background-image: url("../assets/images/image__bikers1.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .home__i-want-you__container {
     width: 100%;
     justify-content: space-between;
