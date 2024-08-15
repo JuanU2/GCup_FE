@@ -57,7 +57,7 @@ export default function Home() {
             pričom po 1,51 km prechádzate okolo orientačného bodu "U Rusa". O
             ďalších 100 metrov sa dostávate na úsek známy ako "U Včelára", kde
             sa začína mierne otvorený terén popri poli. Finálna rovinka vás
-            prevedie popri psiom hoteli, kde sa cyklisti môžu pripraviť na
+            prevedie popri farme, kde sa cyklisti môžu pripraviť na
             posledný šprint do cieľa. Trasa je navrhnutá tak, aby ponúkla
             zaujímavé výzvy a krásne scenérie, ideálna pre súťaživých aj
             rekreačných jazdcov.
