@@ -3,8 +3,10 @@ import "./Home.css";
 import bikers1 from "../assets/images/image__bikers1.jpg";
 import bikers2 from "../assets/images/image__bikers2.jpg";
 import bikers3 from "../assets/images/image__bikers3.jpg";
-import Logo from "../assets/images/icon.svg"
-import Trasa from "../assets/images/trasa.png"
+import Logo from "../assets/images/logo-white.svg";
+import Facebook from "../assets/images/facebook.svg";
+import Maps from "../assets/images/maps.svg";
+import Zalesie from "../assets/images/zalesie.png"
 import { Card, CardContent } from "../@/components/ui/card";
 import "./Caroussel.css";
 import {
@@ -17,30 +19,60 @@ import {
 import Footer from "../components/Footer";
 import { Button } from "../@/components/ui/button";
 import { Link } from "react-router-dom";
+import RouteMap from "../components/RouteMap";
 
 export default function Home() {
   return (
     <>
       <NavBar />
+      <div className="p-6 py-0 pt-12 bg-gray-700 text-white">
+        <h1 className="home-page__intro__headline">Gessayov Cup</h1>
+        <div className="home__i-want-you__container flex-col lg:flex-row gap-12 flex flex-col items-center lg:flex-row">
+          <div className="flex flex-col gap-6 align-center justify-center h-max lg:w-1/2">
+            <h2 className="lg:text-4xl text-center text-2xl">Príďte si zabicyklovať aj vy!</h2>
+            <hr />
+            <p className="text-xl text-center lg:text-left">
+              Radi vás pozývame na deň otcov na náš susedský pretek Gessayov
+              Cup! Oslávte s nami tento výnimočný deň, kde sú vítaní všetci, bez
+              ohľadu na vek. Či už ste najmladší alebo najstarší, pridajte sa k
+              nám a užite si deň plný zábavy a priateľskej súťaže. Pamätajte,
+              dôležité je zúčastniť sa, nie vyhrať. Tešíme sa na vás!
+            </p>
+          </div>
+          <img src={Logo} className="w-32 lg:w-48" alt="Logo" />
+        </div>
+      </div>
+      <div className="flex p-6 justify-center lg:justify-between gap-6 items-center py-2 bg-gray-600">
+        <div className="flex justify-start gap-6 px-12">
+          <a target="_blank" href="https://www.facebook.com/GesajovCup">
+            <img src={Facebook} alt="facebook logo" className="h-10" />
+          </a>
+          <a
+            target="_blank"
+            href="https://www.google.com/maps/place/Hornozelenck%C3%A1+400%2F2,+900+28+Z%C3%A1lesie/@48.1704789,17.2800282,19.04z/data=!4m6!3m5!1s0x476c85ac7c9fe87b:0x76b62be68ea6a93!8m2!3d48.1703268!4d17.2806932!16s%2Fg%2F11td1fdw0p?entry=ttu"
+          >
+            <img src={Maps} alt="mapy" className="h-10" />
+          </a>
+        </div>
+      </div>
+      <div className="lg:grid flex flex-col lg:grid-cols-2 gap-6 lg:gap-24 px-2 lg:px-12 pt-12">
+        <RouteMap/>
+        <div className="flex flex-col gap-6 text-center lg:text-right text-black divide-black px-6 ">
+            <h2 className="text-4xl font-bold">
+                TRASA
+            </h2>
+            <hr />
+            <div className="text-l lg:text-xl">
+            Táto pretekárska cyklotrasa s dĺžkou 4,8 km ponúka dynamický a zaujímavý zážitok. Štartuje sa na úseku, ktorý vedie pomedzi stromy, pričom po 1,51 km prechádzate okolo orientačného bodu "U Rusa". O ďalších 100 metrov sa dostávate na úsek známy ako "U Včelára", kde sa začína mierne otvorený terén popri poli. Finálna rovinka vás prevedie popri psiom hoteli, kde sa cyklisti môžu pripraviť na posledný šprint do cieľa. Trasa je navrhnutá tak, aby ponúkla zaujímavé výzvy a krásne scenérie, ideálna pre súťaživých aj rekreačných jazdcov.
+            </div>
+            <div className="hidden lg:flex flex-col items-center">
+                <img src={Zalesie} alt="Obec Zálesie" className="w-52 p-6"/>
+                <div className="text-4xl h-full">Obec Zálesie</div>
+            </div>
+        </div>
+      </div>
       <div className="home-page">
         <div className="home-page__intro">
-          <h1 className="home-page__intro__headline">
-            Príďte si zabicyklovať aj vy!
-          </h1>
-          <div className="home__i-want-you__container flex-col lg:flex-row gap-12">
-            <img
-              src={Logo}
-              className="home__i-want-you"
-              alt="I Want YOU!"
-            />
-            <a href="https://cyklotrasa.oma.sk/-2266490">
-            <img
-                src={Trasa}
-                className="trasa"
-                alt="Trasa"
-            />
-            </a>
-          </div>
           <div className="home-page__intro__text grid grid-cols-2">
             <section className="intro__text-container">
               <strong>Vítame vás</strong> na oficiálnej stránke cyklopreteku{" "}
@@ -164,19 +196,21 @@ export default function Home() {
           </div>
         </div>
         <div className="w-full p-12 flex flex-col justify-center gap-6">
-            <div className="bg-red-300 border-2 border-black rounded text-center p-6">
-                <h1>
-                    <strong className="font-bold text-xl">Pozor!</strong>
-                </h1>
-                <section>
-                    Osoby staršie ako 18 rokov platia za účasť na mieste štartovný poplatok <strong className="font-bold">5 €</strong> pri prevzatí štartovného čísla.
-                </section>
-            </div>
-            <div className="w-full flex justify-center">
+          <div className="bg-red-300 border-2 border-black rounded text-center p-6">
+            <h1>
+              <strong className="font-bold text-xl">Pozor!</strong>
+            </h1>
+            <section>
+              Osoby staršie ako 18 rokov platia za účasť na mieste štartovný
+              poplatok <strong className="font-bold">5 €</strong> pri prevzatí
+              štartovného čísla.
+            </section>
+          </div>
+          <div className="w-full flex justify-center">
             <Link to="/registracia">
-                <Button className="font-bold text-white">Registrovať sa</Button>
+              <Button className="font-bold text-white">Registrovať sa</Button>
             </Link>
-            </div>
+          </div>
         </div>
       </div>
       <Footer />
