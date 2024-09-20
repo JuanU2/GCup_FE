@@ -1,4 +1,4 @@
-import apiClient from "./client";
+import apiClient, { getCookie } from "./client";
 
 export enum Gender {
     Male = 'M',
@@ -42,7 +42,7 @@ export const create = async (item: CyclistCreate) : Promise<any> => {
 }
 
 export const update = async(id: string, item: CyclistUpdate) => {
-    return (await apiClient.put(`/cyclists/${id}`, item)).data
+    return (await apiClient.put(`/cyclists/${id}`, {...item, session: getCookie("session")})).data
 }
 
 export const remove = async (id: string) => {
