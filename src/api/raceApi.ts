@@ -1,7 +1,11 @@
-import apiClient from "./client"
+import apiClient, { getCookie } from "./client"
 
 export const create = async (item: any) : Promise<boolean> => {
-    return (await apiClient.post(`/races`, item)).status === 201
+    return (await apiClient.post(`/races`, 
+    {
+        ...item,
+        session: getCookie("session")
+    })).status === 201
 }
 
 export const getMany = async () => {
@@ -13,5 +17,5 @@ export const getSingle = async (year: string) => {
 }
 
 export const deleteSingle = async (year: string) => {
-    return (await apiClient.delete(`/races/${year}`)).data
+    return (await apiClient.delete(`/races/${year}`, {params: {session: getCookie("session")}})).data
 }

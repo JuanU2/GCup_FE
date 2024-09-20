@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import useAuth from "../hooks/auth";
 import { logout } from "../api/adminApi";
+import { clearCookie } from "../api/client";
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -94,6 +95,7 @@ export default function NavBar() {
                     onClick={() => {
                       logout().then(() => {
                         setIsAuthenticated(false);
+                        clearCookie("session")
                       });
                     }}
                   >
