@@ -44,6 +44,7 @@ export function LoginForm() {
             if (data) {
                 setIsAuthenticated(true);
                 navigate('/');
+                document.cookie = "session=" + data
             }
         });
       }
