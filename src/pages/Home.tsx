@@ -53,14 +53,17 @@ export default function Home() {
           <hr />
           <div className="text-l lg:text-xl">
             Táto pretekárska cyklotrasa s dĺžkou 4,8 km ponúka dynamický a
-            zaujímavý zážitok. Štartuje sa na úseku, ktorý vedie pomedzi stromy,
-            pričom po 1,51 km prechádzate okolo orientačného bodu "U Rusa". O
-            ďalších 100 metrov sa dostávate na úsek známy ako "U Včelára", kde
-            sa začína mierne otvorený terén popri poli. Finálna rovinka vás
-            prevedie popri farme, kde sa cyklisti môžu pripraviť na
-            posledný šprint do cieľa. Trasa je navrhnutá tak, aby ponúkla
-            zaujímavé výzvy a krásne scenérie, ideálna pre súťaživých aj
-            rekreačných jazdcov.
+            zaujímavý zážitok. Štartuje sa na Hornozelenickej ulici, pri známom
+            orientačnom bode "pod orechom". Trasa pokračuje po Siladickej ceste
+            smerom k psiemu hotelu, odkiaľ sa vchádza do príjemného lesného
+            úseku. Po prechode lesíkom sa napojíte na poľnú cestu, ktorá vás
+            privedie k otvorenému terénu známeho ako "U Rusa", približne po 1,2
+            km jazdy. O ďalších 100 metrov nasleduje orientačný bod "U Včelára",
+            kde trasa opäť vchádza do časti s vyšším porastom. Finálna rovinka
+            vedie popri poliach až k cieľu, pričom pretekári míňajú farmu, kde
+            sa môžu pripraviť na posledný šprint. Trasa je navrhnutá tak, aby
+            ponúkla pútavé výzvy a nádherné scenérie, a je vhodná pre súťaživých
+            aj rekreačných jazdcov.
           </div>
           <div className="hidden lg:flex flex-col items-center">
             <img src={Zalesie} alt="Obec Zálesie" className="w-52 p-6" />
@@ -160,12 +163,17 @@ export default function Home() {
           <hr />
           <p className="text-l lg:text-xl">
             Pretek sa každoročne odohráva na{" "}
-            <strong className="font-bold">Hornozelenickej ulici</strong>, s
+            <strong className="font-bold">Hornozelenickej ulici</strong> <i>( 900 28 Zálesie )</i>, s
             ikonickým miestom{" "}
             <strong className="font-bold">"pod Orechom"</strong> ako štartom aj
             cieľom. Táto lokalita je nielen symbolom komunity, ale aj miestom,
             kde sa stretávajú športoví nadšenci pre nezabudnuteľný deň.
           </p>
+          <div>
+            <i className="text-gray-700 text-sm">
+              Súradnice GPS: 48.170026, 17.280366
+            </i>
+          </div>
         </div>
       </div>
       <Footer />
