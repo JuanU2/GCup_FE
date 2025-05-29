@@ -163,7 +163,7 @@ export default function Home() {
           <hr />
           <p className="text-l lg:text-xl">
             Pretek sa každoročne odohráva na{" "}
-            <strong className="font-bold">Hornozelenickej ulici</strong> <i>( 900 28 Zálesie )</i>, s
+            <strong className="font-bold">Hornozelenickej ulici</strong> <i>(900 28 Zálesie)</i>, s
             ikonickým miestom{" "}
             <strong className="font-bold">"pod Orechom"</strong> ako štartom aj
             cieľom. Táto lokalita je nielen symbolom komunity, ale aj miestom,
