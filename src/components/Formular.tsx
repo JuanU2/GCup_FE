@@ -102,7 +102,7 @@ export function Formular( props: {year: string} ) {
                 <Input placeholder="12" {...field} />
               </FormControl>
               <FormDescription>
-                Vek cyklistu (v rokoch)
+                Vek cyklistu v deň pretekov (v rokoch)
               </FormDescription>
               <FormMessage />
             </FormItem>
