@@ -102,7 +102,7 @@ export default function StickyHeadTable(props: {category: Category, setEditing: 
                     <strong>{props.category.name}</strong>
                 </TableCell>
                 <TableCell sx={{width: '100%', color: 'white'}} colSpan={4}>
-                    <strong>{props.category.gender == 'M' ? "Muži" : "Ženy"}</strong> od {props.category.minAge} rokov do {props.category.maxAge} rokov.
+                    <strong>{props.category.gender == 'M' ? "Muži" : "Ženy"}</strong> od {props.category.minAge} rokov {(props.category.maxAge > 100) ? "a viac." : ("do " + props.category.maxAge.toString() + " rokov.")}
                 </TableCell>
             </TableRow>
             <TableRow sx={{width: '100%'}}>
