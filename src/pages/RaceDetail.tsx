@@ -9,6 +9,7 @@ import StickyHeadTable from "../components/TableSticky"
 import { useGetRace } from "../hooks/race";
 import { useState } from "react";
 import EditForm from "../components/EditForm";
+import Prepositions2025 from "../components/Prepositions2025";
 
 export default function RaceDetail() {
   const { year } = useParams();
@@ -39,6 +40,7 @@ export default function RaceDetail() {
                 </Button>
             </Link>
           </section>
+          <>{((year === "2025")? <Prepositions2025/> : (<></>) )}</>
           <h2 className="p-6 text-2xl text-center">
             Prihlásení cyklisti:
           </h2>
