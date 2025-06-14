@@ -105,6 +105,78 @@ export default function StartListPrint() {
                             <div className="border-2 h-6 border-black">
 
                             </div>
+                            <div className="border-2 h-6 border-black">
+
+                            </div>
+                            <div className="border-2 h-6 border-black">
+
+                            </div>
+                            <div className="border-2 h-6 border-black">
+
+                            </div>
+                            <div className="border-2 h-6 border-black">
+
+                            </div>
+                            <div className="border-2 h-6 border-black">
+
+                            </div>
+                            <div className="border-2 h-6 border-black">
+
+                            </div>
+                            <div className="border-2 h-6 border-black">
+
+                            </div>
+                            <div className="border-2 h-6 border-black">
+
+                            </div>
+                            <div className="border-2 h-6 border-black">
+
+                            </div>
+                            <div className="border-2 h-6 border-black">
+
+                            </div>
+                            <div className="border-2 h-6 border-black">
+
+                            </div>
+                            <div className="border-2 h-6 border-black">
+
+                            </div>
+                            <div className="border-2 h-6 border-black">
+
+                            </div>
+                            <div className="border-2 h-6 border-black">
+
+                            </div>
+                            <div className="border-2 h-6 border-black">
+
+                            </div>
+                            <div className="border-2 h-6 border-black">
+
+                            </div>
+                            <div className="border-2 h-6 border-black">
+
+                            </div>
+                            <div className="border-2 h-6 border-black">
+
+                            </div>
+                            <div className="border-2 h-6 border-black">
+
+                            </div>
+                            <div className="border-2 h-6 border-black">
+
+                            </div>
+                            <div className="border-2 h-6 border-black">
+
+                            </div>
+                            <div className="border-2 h-6 border-black">
+
+                            </div>
+                            <div className="border-2 h-6 border-black">
+
+                            </div>
+                            <div className="border-2 h-6 border-black">
+
+                            </div>
                             </>
                         )
                     )
