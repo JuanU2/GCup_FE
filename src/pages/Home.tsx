@@ -14,15 +14,24 @@ export default function Home() {
   return (
     <>
       <NavBar />
-      <div className="p-6 py-0 pt-12 bg-gray-700 text-white">
-        <h1 className="home-page__intro__headline">Gessayov Cup</h1>
-        <div className="home__i-want-you__container flex-col lg:flex-row gap-12 flex flex-col items-center lg:flex-row">
-          <div className="flex flex-col gap-6 align-center justify-center h-max lg:w-1/2">
-            <h2 className="lg:text-4xl text-center lg:text-left text-2xl">
-              Príďte si zabicyklovať aj vy!
-            </h2>
-            <hr />
-            <p className="text-xl text-center lg:text-left">
+      {/* Hero Section */}
+      <div className="hero">
+        <div className="hero__overlay" />
+        <div className="hero__content">
+          <h1 className="hero__title">Gessayov Cup</h1>
+          <p className="hero__subtitle">
+            Každoročný cyklistický pretek pre celú rodinu na Deň otcov
+          </p>
+        </div>
+      </div>
+
+      {/* Intro Section */}
+      <div className="intro">
+        <div className="intro__container">
+          <div className="intro__text">
+            <h2 className="intro__heading">Príďte si zabicyklovať aj vy!</h2>
+            <hr className="intro__divider" />
+            <p className="intro__paragraph">
               Radi vás pozývame na deň otcov na náš susedský pretek Gessayov
               Cup! Oslávte s nami tento výnimočný deň, kde sú vítaní všetci, bez
               ohľadu na vek. Či už ste najmladší alebo najstarší, pridajte sa k
@@ -30,93 +39,99 @@ export default function Home() {
               dôležité je zúčastniť sa, nie vyhrať. Tešíme sa na vás!
             </p>
           </div>
-          <img src={Logo} className="w-32 lg:w-48" alt="Logo" />
+          <img src={Logo} className="intro__logo" alt="Logo" />
         </div>
       </div>
-      <div className="flex p-6 justify-center lg:justify-between gap-6 items-center py-2 bg-gray-600">
-        <div className="flex justify-start gap-6 px-12">
-          <a target="_blank" href="https://www.facebook.com/GesajovCup">
-            <img src={Facebook} alt="facebook logo" className="h-10" />
-          </a>
-          <a
-            target="_blank"
-            href="https://www.google.com/maps/place/Hornozelenck%C3%A1+400%2F2,+900+28+Z%C3%A1lesie/@48.1704789,17.2800282,19.04z/data=!4m6!3m5!1s0x476c85ac7c9fe87b:0x76b62be68ea6a93!8m2!3d48.1703268!4d17.2806932!16s%2Fg%2F11td1fdw0p?entry=ttu"
-          >
-            <img src={Maps} alt="mapy" className="h-10" />
-          </a>
-        </div>
+
+      {/* Social bar */}
+      <div className="social-bar">
+        <a target="_blank" href="https://www.facebook.com/GesajovCup" rel="noopener noreferrer" className="social-bar__link">
+          <img src={Facebook} alt="facebook logo" className="social-bar__icon" />
+          <span>Sledujte nás na Facebooku</span>
+        </a>
+        <a
+          target="_blank"
+          href="https://www.google.com/maps/place/Hornozelenck%C3%A1+400%2F2,+900+28+Z%C3%A1lesie/@48.1704789,17.2800282,19.04z/data=!4m6!3m5!1s0x476c85ac7c9fe87b:0x76b62be68ea6a93!8m2!3d48.1703268!4d17.2806932!16s%2Fg%2F11td1fdw0p?entry=ttu"
+          rel="noopener noreferrer"
+          className="social-bar__link"
+        >
+          <img src={Maps} alt="mapy" className="social-bar__icon" />
+          <span>Nájdite nás na mape</span>
+        </a>
       </div>
-      <div className="lg:grid flex flex-col lg:grid-cols-2 gap-6 lg:gap-24 px-2 lg:px-12 p-12">
-        <RouteMap />
-        <div className="flex flex-col gap-6 text-center lg:text-right text-black divide-black px-6 ">
-          <h2 className="text-4xl font-bold">TRASA</h2>
-          <hr />
-          <div className="text-l lg:text-xl">
-            Táto pretekárska cyklotrasa s dĺžkou 4,8 km ponúka dynamický a
-            zaujímavý zážitok. Štartuje sa na Hornozelenickej ulici, pri známom
-            orientačnom bode "pod orechom". Trasa pokračuje po Siladickej ceste
-            smerom k psiemu hotelu, odkiaľ sa vchádza do príjemného lesného
-            úseku. Po prechode lesíkom sa napojíte na poľnú cestu, ktorá vás
-            privedie k otvorenému terénu známeho ako "U Rusa", približne po 1,2
-            km jazdy. O ďalších 100 metrov nasleduje orientačný bod "U Včelára",
-            kde trasa opäť vchádza do časti s vyšším porastom. Finálna rovinka
-            vedie popri poliach až k cieľu, pričom pretekári míňajú farmu, kde
-            sa môžu pripraviť na posledný šprint. Trasa je navrhnutá tak, aby
-            ponúkla pútavé výzvy a nádherné scenérie, a je vhodná pre súťaživých
-            aj rekreačných jazdcov.
+
+      {/* Route Section */}
+      <div className="route-section">
+        <div className="route-section__grid">
+          <RouteMap />
+          <div className="route-section__info">
+            <h2 className="route-section__title">TRASA</h2>
+            <hr className="route-section__divider" />
+            <p className="route-section__text">
+              Táto pretekárska cyklotrasa s dĺžkou 4,8 km ponúka dynamický a
+              zaujímavý zážitok. Štartuje sa na Hornozelenickej ulici, pri známom
+              orientačnom bode "pod orechom". Trasa pokračuje po Siladickej ceste
+              smerom k psiemu hotelu, odkiaľ sa vchádza do príjemného lesného
+              úseku. Po prechode lesíkom sa napojíte na poľnú cestu, ktorá vás
+              privedie k otvorenému terénu známeho ako "U Rusa", približne po 1,2
+              km jazdy. O ďalších 100 metrov nasleduje orientačný bod "U Včelára",
+              kde trasa opäť vchádza do časti s vyšším porastom. Finálna rovinka
+              vedie popri poliach až k cieľu, pričom pretekári míňajú farmu, kde
+              sa môžu pripraviť na posledný šprint. Trasa je navrhnutá tak, aby
+              ponúkla pútavé výzvy a nádherné scenérie, a je vhodná pre súťaživých
+              aj rekreačných jazdcov.
+            </p>
+            <div className="route-section__badge">
+              <img src={Zalesie} alt="Obec Zálesie" className="route-section__badge-img" />
+              <span className="route-section__badge-text">Obec Zálesie</span>
+            </div>
           </div>
-          <div className="hidden lg:flex flex-col items-center">
-            <img src={Zalesie} alt="Obec Zálesie" className="w-52 p-6" />
-            <div className="text-4xl h-full">Obec Zálesie</div>
-          </div>
         </div>
       </div>
-      <div className="home__cyclist__container">
-        <div className="home__cyclist__container__element pt-6 grid grid-cols-1 lg:grid-cols-2">
-          <div className="flex flex-col gap-6 p-6 lg:p-24 text-white divide-white">
-            <h1 className="font-bold text-2xl text-center lg:text-left lg:text-4xl">
-              REGISTRÁCIA
-            </h1>
-            <hr />
-            <h2 className="text-xl text-center lg:text-left lg:text-3xl">
-              🚴‍♂️ Ste pripravení na výzvu? 🚴‍♀️
+
+      {/* Registration CTA Section */}
+      <div className="cta-section">
+        <div className="cta-section__grid">
+          <div className="cta-section__left">
+            <h1 className="cta-section__heading">REGISTRÁCIA</h1>
+            <hr className="cta-section__divider" />
+            <h2 className="cta-section__subheading">
+              Ste pripravení na výzvu?
             </h2>
-            <p className="text-l text-center lg:text-left lg:text-xl">
+            <p className="cta-section__text">
               Nezmeškajte príležitosť stať sa súčasťou jedinečného športového
               podujatia! Naša cyklistická súťaž je ideálnou príležitosťou, ako
               si užiť deň plný zábavy, konkurencie a osobných víťazstiev. Či už
               ste skúsený jazdec alebo len začínate, nájdete u nás výzvy, ktoré
               vás nadchnú!
             </p>
-            <div className="hidden lg:flex flex-col border-white gap-3 border-2 rounded-xl p-3">
-              <h2 className="font-bold text-xl lg:text-2xl">
-                Prečo sa zaregistrovať?
-              </h2>
+            <div className="cta-section__reasons">
+              <h2>Prečo sa zaregistrovať?</h2>
               <hr />
-              <ul className="list-disc p-6 text-l">
+              <ul>
                 <li>
-                  <h3 className="font-bold">🌟 Skvelá atmosféra:</h3>
+                  <h3>Skvelá atmosféra</h3>
                   <p>
                     Pretek je viac než len závod - je to oslava cyklistiky a
                     komunitného ducha.
                   </p>
                 </li>
                 <li>
-                  <h3 className="font-bold">🏆 Cenné ceny:</h3>
+                  <h3>Cenné ceny</h3>
                   <p>
                     Čakajú vás skvelé odmeny a trofeje pre víťazov rôznych
                     kategórií.
                   </p>
                 </li>
                 <li>
-                  <h3 className="font-bold">🌿 Krásne prostredie:</h3>
+                  <h3>Krásne prostredie</h3>
                   <p>
                     Užívajte si jazdu v krásnych scenériách a prírodných
                     úsekoch.
                   </p>
                 </li>
                 <li>
-                  <h3 className="font-bold">🤝 Skvelá komunita:</h3>
+                  <h3>Skvelá komunita</h3>
                   <p>
                     Spoznajte nových priateľov a prežite nezabudnuteľný deň v
                     spoločnosti nadšencov cyklistiky.
@@ -125,57 +140,57 @@ export default function Home() {
               </ul>
             </div>
           </div>
-          <div className="flex flex-col text-white items-center text-center gap-6 p-6 justify-center">
-            <h1 className="text-2xl lg:text-4xl font-bold">
+          <div className="cta-section__right">
+            <h1 className="cta-section__cta-heading">
               Nečakajte a prihláste sa ešte dnes!
             </h1>
-            <p className="text-l lg:text-xl">
+            <p className="cta-section__cta-text">
               Vyplňte náš jednoduchý registračný formulár a zabezpečte si miesto
               v pretekoch. Čím skôr sa prihlásite, tým viac času budete mať na
               prípravu a tréning.
             </p>
-            <Link to="/registracia" className="p-3 lg:p-12">
-              <Button className="font-bold h-24 w-64 lg:w-full p-6 text-white text-2xl lg:text-4xl bg-green-700 hover:bg-green-800 border-green-900 border-8">
+            <Link to="/registracia">
+              <Button className="cta-section__button">
                 Zaregistrujte sa tu!
               </Button>
             </Link>
-            <div className="lg:w-1/2 text-center p-6">
-              <h1>
-                <strong className="font-bold text-xl">Pozor!</strong>
-              </h1>
-              <section>
+            <div className="cta-section__note">
+              <h1>Pozor!</h1>
+              <p>
                 Osoby staršie ako 18 rokov platia za účasť na mieste štartovný
-                poplatok <strong className="font-bold">5 €</strong> pri prevzatí
-                štartovného čísla.
-              </section>
+                poplatok <strong>5 €</strong> pri prevzatí štartovného čísla.
+              </p>
             </div>
           </div>
         </div>
       </div>
-      <div className="grid lg:grid-cols-2 grid-cols-1 p-12">
-        <img
-          src={Hornozelenicka}
-          alt="hornozelenická ulica"
-          className="rounded-xl"
-        />
-        <div className="text-center lg:text-right flex flex-col divide-black gap-6 p-6 lg:p-12">
-          <h1 className="text-2xl font-bold lg:text-4xl">LOKALITA</h1>
-          <hr />
-          <p className="text-l lg:text-xl">
-            Pretek sa každoročne odohráva na{" "}
-            <strong className="font-bold">Hornozelenickej ulici</strong> <i>(900 28 Zálesie)</i>, s
-            ikonickým miestom{" "}
-            <strong className="font-bold">"pod Orechom"</strong> ako štartom aj
-            cieľom. Táto lokalita je nielen symbolom komunity, ale aj miestom,
-            kde sa stretávajú športoví nadšenci pre nezabudnuteľný deň.
-          </p>
-          <div>
-            <i className="text-gray-700 text-sm">
-              Súradnice GPS: 48.170026, 17.280366
-            </i>
+
+      {/* Location Section */}
+      <div className="location-section">
+        <div className="location-section__grid">
+          <img
+            src={Hornozelenicka}
+            alt="hornozelenická ulica"
+            className="location-section__image"
+          />
+          <div className="location-section__info">
+            <h1 className="location-section__title">LOKALITA</h1>
+            <hr className="location-section__divider" />
+            <p>
+              Pretek sa každoročne odohráva na{" "}
+              <strong>Hornozelenickej ulici</strong>{" "}
+              <i>(900 28 Zálesie)</i>, s ikonickým miestom{" "}
+              <strong>"pod Orechom"</strong> ako štartom aj cieľom. Táto lokalita
+              je nielen symbolom komunity, ale aj miestom, kde sa stretávajú
+              športoví nadšenci pre nezabudnuteľný deň.
+            </p>
+            <span className="location-section__gps">
+              GPS: 48.170026, 17.280366
+            </span>
           </div>
         </div>
       </div>
+
       <Footer />
     </>
   );

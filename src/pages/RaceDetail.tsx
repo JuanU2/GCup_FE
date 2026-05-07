@@ -1,7 +1,7 @@
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import { Link, useParams } from "react-router-dom";
-import { Button } from "flowbite-react";
+import { Button } from "../@/components/ui/button";
 import Spinner from "../components/Spinner";
 import { CalendarIcon } from "lucide-react";
 import "./RaceDetail.css";
@@ -19,10 +19,12 @@ export default function RaceDetail() {
     <>
       <NavBar />
       <div className="race-detail">
-        <h1 className="text-2xl text-center p-6">Detail preteku {year}.</h1>
-        <div className="detail__detail">
-          <section className="font-bold text-center flex w-full justify-center gap-6">
-             <CalendarIcon/> {isLoading ? (
+        <h1 className="race-detail__title">Detail preteku {year}</h1>
+
+        <div className="race-detail__card">
+          <div className="race-detail__date">
+            <CalendarIcon className="race-detail__calendar-icon" />
+            {isLoading ? (
               <Spinner />
             ) : (
               new Intl.DateTimeFormat("sk-Sk", {
@@ -32,27 +34,32 @@ export default function RaceDetail() {
                 day: "numeric",
               }).format(new Date(raceData.raceDate))
             )}
-          </section>
-          <section className="w-full flex justify-center align-center p-6">
-            <Link to={"/tlac/listina/" + year}>
-                <Button className="bg-blue-400">
-                    Štartovacia/Výsledková listina
-                </Button>
-            </Link>
-          </section>
-          <>{((year === "2025")? <Prepositions2025/> : (<></>) )}</>
-          <h2 className="p-6 text-2xl text-center">
+          </div>
+
+          <Link to={"/tlac/listina/" + year}>
+            <Button className="race-detail__list-btn">
+              Štartovacia/Výsledková listina
+            </Button>
+          </Link>
+
+          {(year === "2025") && <Prepositions2025 />}
+
+          <h2 className="race-detail__cyclists-heading">
             Prihlásení cyklisti:
           </h2>
-          <div className="tables__wrapper">
-          {isLoading || raceData.categories.map((category: any) => (<div key={category.code} className="table--container"><StickyHeadTable category={category} setEditing={setEditing} /></div>))}
-          <div>
-            {editing && (
-              <EditForm editing={editing} setEditing={setEditing}/>
-            )}
-          </div>
-          </div>
         </div>
+
+        <div className="race-detail__tables">
+          {isLoading || raceData.categories.map((category: any) => (
+            <div key={category.code} className="race-detail__table-wrapper">
+              <StickyHeadTable category={category} setEditing={setEditing} />
+            </div>
+          ))}
+        </div>
+
+        {editing && (
+          <EditForm editing={editing} setEditing={setEditing} />
+        )}
       </div>
       <Footer />
     </>

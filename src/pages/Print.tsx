@@ -10,19 +10,15 @@ export default function Print() {
     <>
     <NavBar/>
     <div className="print-page">
-        <h1 className="p-12 text-center text-2xl font-bold">Tlač dokumentov</h1>
-        <div className="flex lg:flex-row flex-col gap-24 w-full lg:justify-center justify-evenly p-12">
-            <Link to="/tlac/cislo" className="print-card text-center flex flex-col justify-between items-center gap-6 p-12 bg-gray-200 rounded-xl">
-                <img src={StartCislo} alt="Štartovacie číslo obrázok" className="w-48" />
-                <span className="text-xl">
-                    Tlač štartovacieho čísla
-                </span>
+        <h1 className="print-page__title text-center p-12">Tlač dokumentov</h1>
+        <div className="print-page__grid">
+            <Link to="/tlac/cislo" className="print-card">
+                <img src={StartCislo} alt="Štartovacie číslo obrázok" />
+                <span>Tlač štartovacieho čísla</span>
             </Link>
-            <Link to="/tlac/listina" className="print-card text-center flex flex-col justify-between items-center gap-6 p-12 bg-gray-200 rounded-xl">
-                <img src={VyslList} alt="Štartovacia/výsledková listina obrázok" className="w-48" />
-                <span className="text-xl">
-                    Tlač štartovacej/výsledkovej listiny
-                </span>
+            <Link to="/tlac/listina" className="print-card">
+                <img src={VyslList} alt="Štartovacia/výsledková listina obrázok" />
+                <span>Tlač štartovacej/výsledkovej listiny</span>
             </Link>
         </div>
     </div>

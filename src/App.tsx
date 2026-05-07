@@ -17,7 +17,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
   return (
-    <div className='bg-gray-300'>
+    <div className='min-h-screen bg-gradient-to-b from-green-50/50 via-white to-emerald-50/30'>
     <AuthProvider>
     <Routes>
         <Route path="/" element={<Home />} />

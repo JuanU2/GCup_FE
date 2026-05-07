@@ -1,16 +1,60 @@
 .registration-page {
-    height: 100%;
-    width: 100%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: top;
     align-items: center;
-    padding: 3rem;
-    gap: 1rem;
+    padding: 2rem 1.5rem 3rem;
+    gap: 1.5rem;
+}
+
+.registration-warning {
+    background: linear-gradient(135deg, rgb(255, 240, 240), rgb(255, 225, 225));
+    border: 2px solid rgb(255, 180, 180);
+    border-radius: 0.75rem;
+    text-align: center;
+    padding: 1rem 1.5rem;
+    max-width: 32rem;
+    width: 100%;
+}
+
+.registration-warning h1 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: rgb(180, 30, 30);
+    margin: 0 0 0.3rem;
+}
+
+.registration-warning p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: rgb(140, 40, 40);
+    line-height: 1.5;
+}
+
+.registration-page__title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    text-align: center;
+    color: rgb(10, 38, 20);
+    margin: 0;
 }
 
 .registration-form {
-    width: 80%;
-    max-width: 600px;
+    width: 100%;
+    max-width: 520px;
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(8, 32, 18, 0.08);
+}
+
+@media screen and (min-width: 768px) {
+    .registration-page {
+        padding-top: 3rem;
+    }
+
+    .registration-page__title {
+        font-size: 1.6rem;
+    }
 }

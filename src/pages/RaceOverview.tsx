@@ -12,6 +12,7 @@ import useAuth from "../hooks/auth";
 import { useState } from "react";
 import { Button } from "../@/components/ui/button";
 import { useRaceDelete } from "../hooks/race";
+
 function ConvertToDateString(date: Date): string {
   return new Intl.DateTimeFormat("sk-Sk", {
     weekday: "short",
@@ -24,86 +25,96 @@ function ConvertToDateString(date: Date): string {
 export default function RaceOverview() {
   const [deletingYear, setDeletingYear]: any = useState(undefined);
   const { isAuthenticated } = useAuth();
-  const { mutateAsync: deleteRace, isPending } = useRaceDelete()
-  const today = new Date()
-  today.setHours(0, 0, 0, 0)
+  const { mutateAsync: deleteRace, isPending } = useRaceDelete();
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
   const { data: raceData, isLoading: racesLoading } = useQuery({
     queryKey: ["races"],
     queryFn: getMany,
   });
+
   return (
     <>
       <NavBar />
-      <h1 className="font-bold font-lg text-center p-6 text-2xl">
-        Registrácia na pretek, vyberte pretek:
-      </h1>
       <div className="race-overview">
-        {racesLoading ? (
-          <Spinner />
-        ) : (
-          raceData.map((race: any) => {
-            const raceDate = new Date(race.raceDate)
-            const year = new Date(race.raceDate).getFullYear().toString();
-            return (
-              <Card className="flex flex-col w-fit p-6">
-                {isAuthenticated ? (
-                  <div className="flex justify-end">
-                    <button
-                      onClick={() => setDeletingYear(year)}
-                      className="border-black border-2 rounded hover:bg-red-500 bg-red-400 p-1"
+        <h1 className="race-overview__title">
+          Registrácia na pretek, vyberte pretek:
+        </h1>
+        <div className="race-overview__grid">
+          {racesLoading ? (
+            <Spinner />
+          ) : (
+            raceData.map((race: any) => {
+              const raceDate = new Date(race.raceDate);
+              const year = new Date(race.raceDate).getFullYear().toString();
+              const isPast = raceDate < today;
+              return (
+                <Card key={year} className="race-card">
+                  {isAuthenticated && (
+                    <div className="race-card__delete-row">
+                      <button
+                        onClick={() => setDeletingYear(year)}
+                        className="race-card__delete-btn"
+                        title="Vymazať pretek"
+                      >
+                        <TrashIcon className="h-5 w-5" />
+                      </button>
+                    </div>
+                  )}
+                  <div className="race-card__year-badge">{year}</div>
+                  <div className="race-card__date">
+                    <CalendarIcon className="race-card__calendar-icon" />
+                    <span>{ConvertToDateString(new Date(race.raceDate))}</span>
+                  </div>
+                  <div className="race-card__actions">
+                    <Link to={"/pretek/" + year}>
+                      <Button className="race-card__btn race-card__btn--detail">
+                        Detail preteku
+                      </Button>
+                    </Link>
+                    <Link
+                      className={isPast ? "pointer-events-none" : ""}
+                      to={isPast ? "#" : "/registracia/" + year}
                     >
-                      <TrashIcon className="h-6 text-white" />
-                    </button>
+                      <Button
+                        disabled={isPast}
+                        className="race-card__btn race-card__btn--register"
+                      >
+                        Registrovať sa
+                      </Button>
+                    </Link>
                   </div>
-                ) : (
-                  <></>
-                )}
-                <h1 className="text-center font-bold">Gessayov Cup {year}</h1>
-                <hr />
-                <div className="grid grid-cols-2 text-center content-center">
-                  <CalendarIcon />
-                  <section>
-                    {ConvertToDateString(new Date(race.raceDate))}
-                  </section>
-                  <div className="col-span-2 lg:flex">
-                    <div className="button-container">
-                      <Link to={"/pretek/" + year}>
-                        <Button className="w-full bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
-                          Detail preteku
-                        </Button>
-                      </Link>
+
+                  {deletingYear === year && (
+                    <div className="delete-overlay" onClick={() => setDeletingYear(undefined)}>
+                      <div className="delete-dialog" onClick={(e) => e.stopPropagation()}>
+                        <h1>Ste si istý že chcete vymazať pretek Gessayov Cup {year}?</h1>
+                        <p>Táto akcia je nenávratná.</p>
+                        <div className="delete-dialog__buttons">
+                          <Button
+                            className="bg-gray-500 hover:bg-gray-600 text-white font-semibold"
+                            onClick={() => setDeletingYear(undefined)}
+                          >
+                            Zrušiť
+                          </Button>
+                          <Button
+                            disabled={isPending}
+                            className="bg-red-500 hover:bg-red-600 text-white font-semibold"
+                            onClick={() => {
+                              deleteRace(year).then(() => setDeletingYear(undefined));
+                            }}
+                          >
+                            {isPending ? <Spinner /> : "Potvrdiť"}
+                          </Button>
+                        </div>
+                      </div>
                     </div>
-                    <div className="button-container">
-                      <Link className={(raceDate < today) ? "hover:cursor-default" : ""} to={(raceDate < today)? "#" : "/registracia/" + year}>
-                        <Button disabled={ raceDate < today} className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                          Registrovať sa
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-                {deletingYear ? (
-                  <div className="delete-form__container rounded-xl gap-6">
-                    <h1>
-                      Ste si istý že chcete vymazať pretek Gessayov Cup {year}?
-                    </h1>
-                    <h2>
-                        Táto akcia je nenávratná
-                    </h2>
-                    <div className="flex w-full justify-end align-center gap-6">
-                        <Button className="bg-gray-500 font-bold" onClick={() => setDeletingYear(undefined)}>Zrušiť</Button>
-                        <Button disabled={isPending} className="bg-red-500 font-bold" onClick={() => {
-                            deleteRace(year).then(() => setDeletingYear(undefined));
-                        }} >{isPending ? <Spinner/> : "Potvrdiť"}</Button>
-                    </div>
-                  </div>
-                ) : (
-                  <></>
-                )}
-              </Card>
-            );
-          })
-        )}
+                  )}
+                </Card>
+              );
+            })
+          )}
+        </div>
       </div>
       <Footer />
     </>

@@ -1,25 +1,83 @@
 .race-detail {
     min-height: 100vh;
-    padding: 2rem;
+    padding: 2rem 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.tables__wrapper {
+.race-detail__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    color: rgb(10, 38, 20);
+    margin: 0 0 1.5rem;
+}
+
+.race-detail__card {
+    background: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(8, 32, 18, 0.08);
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     align-items: center;
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-    gap: 3rem;
+    gap: 1rem;
+    margin-bottom: 2rem;
 }
 
-.table--container {
-    width: 90%;
+.race-detail__date {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.05rem;
+    color: #444;
+    font-weight: 500;
+}
+
+.race-detail__calendar-icon {
+    height: 1.2rem;
+    width: 1.2rem;
+    color: rgb(12, 48, 26);
+}
+
+.race-detail__list-btn {
+    background: linear-gradient(135deg, rgb(14, 55, 30), rgb(18, 70, 38));
+    color: white;
+    font-weight: 600;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.race-detail__list-btn:hover {
+    opacity: 0.9;
+}
+
+.race-detail__cyclists-heading {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+    color: #333;
+    margin: 0.5rem 0 0;
+}
+
+.race-detail__tables {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+}
+
+.race-detail__table-wrapper {
+    width: 100%;
 }
 
 @media screen and (min-width: 1024px) {
-    .table--container {
-        width: 70%;
+    .race-detail__table-wrapper {
+        max-width: 85%;
+        margin: 0 auto;
     }
 }

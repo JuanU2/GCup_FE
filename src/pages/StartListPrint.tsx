@@ -42,22 +42,22 @@ export default function StartListPrint() {
                             </div>
                             {category.cyclists.map( (cyclist: any, index: number) => (
                                 <>
-                                <div className={ ((index % 2 === 0) ? " bg-green-100 " : " bg-red-100 ") + "border-2 border-black"}>
+                                <div className={ ((index % 2 === 0) ? " bg-blue-100 " : " bg-red-100 ") + "border-2 border-black"}>
                                     {cyclist.start_number}
                                 </div>
-                                <div className={ ((index % 2 === 0) ? " bg-green-100 " : " bg-red-100 ") + "border-2 border-black"}>
+                                <div className={ ((index % 2 === 0) ? " bg-blue-100 " : " bg-red-100 ") + "border-2 border-black"}>
                                     {cyclist.name}
                                 </div>
-                                <div className={ ((index % 2 === 0) ? " bg-green-100 " : " bg-red-100 ") + "border-2 border-black"}>
+                                <div className={ ((index % 2 === 0) ? " bg-blue-100 " : " bg-red-100 ") + "border-2 border-black"}>
                                     {cyclist.surname}
                                 </div>
-                                <div className={ ((index % 2 === 0) ? " bg-green-100 " : " bg-red-100 ") + "border-2 border-black"}>
+                                <div className={ ((index % 2 === 0) ? " bg-blue-100 " : " bg-red-100 ") + "border-2 border-black"}>
                                     {cyclist.age}
                                 </div>
-                                <div className={ ((index % 2 === 0) ? " bg-green-100 " : " bg-red-100 ") + "border-2 border-black"}>
+                                <div className={ ((index % 2 === 0) ? " bg-blue-100 " : " bg-red-100 ") + "border-2 border-black"}>
                                     {cyclist.time_seconds ? formatTime(cyclist.time_seconds) : "-"}
                                 </div>
-                                <div className={ ((index % 2 === 0) ? " bg-green-100 " : " bg-red-100 ") + "border-2 border-black"}>
+                                <div className={ ((index % 2 === 0) ? " bg-blue-100 " : " bg-red-100 ") + "border-2 border-black"}>
                                     { cyclist.time_seconds ?
                                     (category.cyclists.slice()
                                         .sort((a: any, b: any) => {

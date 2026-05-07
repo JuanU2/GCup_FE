@@ -10,23 +10,17 @@ export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const { isAuthenticated, setIsAuthenticated } = useAuth();
   return (
-    <nav className="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <Link
-          to="/"
-          className="flex items-center space-x-3 rtl:space-x-reverse"
-        >
-          <img src={Icon} className="h-8" alt="Logo" />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-            Gessayov Cup
-          </span>
+    <nav className="navbar">
+      <div className="navbar__container">
+        <Link to="/" className="navbar__brand">
+          <img src={Icon} className="navbar__icon" alt="Logo" />
+          <span className="navbar__title">Gessayov Cup</span>
         </Link>
         <button
-          data-collapse-toggle="navbar-multi-level"
           type="button"
-          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-          aria-controls="navbar-multi-level"
-          aria-expanded="false"
+          className="navbar__toggle"
+          aria-controls="navbar-menu"
+          aria-expanded={isOpen}
           onClick={() => setIsOpen(!isOpen)}
         >
           <span className="sr-only">Open main menu</span>
@@ -39,74 +33,57 @@ export default function NavBar() {
           >
             <path
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M1 1h15M1 7h15M1 13h15"
             />
           </svg>
         </button>
         <div
-          className={
-            (isOpen ? "shown-menu " : "") +
-            "menu-nav overflow-hidden w-full md:block md:w-auto"
-          }
-          id="navbar-multi-level"
+          className={`navbar__menu${isOpen ? " navbar__menu--open" : ""}`}
+          id="navbar-menu"
         >
-          <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <ul className="navbar__links">
             <li>
-              <Link
-                to="/"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                aria-current="page"
-              >
+              <Link to="/" className="navbar__link" onClick={() => setIsOpen(false)}>
                 Domov
               </Link>
             </li>
             <li>
               <a
                 href="https://www.facebook.com/GesajovCup/"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                aria-current="page"
-                target="blank"
+                className="navbar__link"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Aktuality
               </a>
             </li>
-            
             <li>
-              <Link
-                to="/registracia"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >
+              <Link to="/registracia" className="navbar__link" onClick={() => setIsOpen(false)}>
                 Registrácia
               </Link>
             </li>
             {isAuthenticated && (
               <>
                 <li>
-                  <Link
-                    to="/novy-pretek"
-                    className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                  >
+                  <Link to="/novy-pretek" className="navbar__link" onClick={() => setIsOpen(false)}>
                     Nový Pretek
                   </Link>
                 </li>
                 <li>
-                    <Link
-                      to="/tlac"
-                      className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                    >
-                      Tlač
-                    </Link>
+                  <Link to="/tlac" className="navbar__link" onClick={() => setIsOpen(false)}>
+                    Tlač
+                  </Link>
                 </li>
                 <li>
                   <button
-                    className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                    className="navbar__link navbar__logout"
                     onClick={() => {
                       logout().then(() => {
                         setIsAuthenticated(false);
-                        clearCookie("session")
+                        clearCookie("session");
                       });
                     }}
                   >

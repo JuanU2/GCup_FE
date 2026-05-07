@@ -30,7 +30,7 @@ const columns: readonly Column[] = [
   },
   {
     id: 'time',
-    label: 'Čas (hh:mm:ss:MM)',
+    label: 'Čas (hh:mm:ss:MS)',
     align: 'right',
   },
 ];
@@ -93,24 +93,24 @@ export default function StickyHeadTable(props: {category: Category, setEditing: 
   );
 
   return (
-    <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+    <Paper sx={{ width: '100%', overflow: 'hidden', borderRadius: '0.75rem', boxShadow: '0 2px 16px rgba(0,0,0,0.06)' }}>
       <TableContainer sx={{ maxHeight: 440, width: '100%' }}>
         <Table sx={{width: '100%'}} aria-label="table">
-          <TableHead sx={{width: '100%', backgroundColor: 'rgb(60, 60, 60)'}}>
-            <TableRow className='text-center font-bold w-full text-xl'>
-                <TableCell sx={{color: 'white'}}>
-                    <strong>{props.category.name}</strong>
+          <TableHead>
+            <TableRow sx={{ backgroundColor: 'rgb(8, 32, 18)' }}>
+                <TableCell sx={{color: 'white', fontWeight: 700, fontSize: '1rem'}}>
+                    {props.category.name}
                 </TableCell>
-                <TableCell sx={{width: '100%', color: 'white'}} colSpan={4}>
-                    <strong>{props.category.gender == 'M' ? "Muži" : "Ženy"}</strong> od {props.category.minAge} rokov {(props.category.maxAge > 100) ? "a viac." : ("do " + props.category.maxAge.toString() + " rokov.")}
+                <TableCell sx={{color: 'rgba(255,255,255,0.85)', fontWeight: 600}} colSpan={4}>
+                    {props.category.gender == 'M' ? "Muži" : "Ženy"} — od {props.category.minAge} rokov {(props.category.maxAge > 100) ? "a viac" : ("do " + props.category.maxAge.toString() + " rokov")}
                 </TableCell>
             </TableRow>
-            <TableRow sx={{width: '100%'}}>
+            <TableRow sx={{ backgroundColor: 'rgb(12, 45, 26)' }}>
               {columns.map((column) => (
                 <TableCell
                   key={column.id}
                   align={column.align}
-                  style={{ minWidth: column.minWidth ,color: 'white'}}
+                  style={{ minWidth: column.minWidth, color: 'white', fontWeight: 600, fontSize: '0.85rem' }}
                 >
                   {column.label}
                 </TableCell>
@@ -121,7 +121,9 @@ export default function StickyHeadTable(props: {category: Category, setEditing: 
             {rows
               .map((row) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.starting_number}>
+                  <TableRow hover role="checkbox" tabIndex={-1} key={row.starting_number}
+                    sx={{ '&:nth-of-type(even)': { backgroundColor: 'rgba(8, 32, 18, 0.04)' } }}
+                  >
                     {columns.map((column) => {
                       const value = row[column.id];
                       return (
@@ -129,9 +131,13 @@ export default function StickyHeadTable(props: {category: Category, setEditing: 
                           {column.format && typeof value === 'number'
                             ? column.format(value)
                             : value}
-                            {(isAuthenticated && (column.id === "time")) ? 
-                            <button className='w-8 rounded bg-blue-200 hover:bg-blue-300 m-3'>
-                                <img src={EditIcon} className='p-1' alt="Edit" onClick={() => props.setEditing(row)} />
+                            {(isAuthenticated && (column.id === "time")) ?
+                            <button
+                              className='edit-time-btn'
+                              onClick={() => props.setEditing(row)}
+                              title="Upraviť čas"
+                            >
+                                <img src={EditIcon} className='p-1' alt="Edit" />
                             </button> : <></>}
                         </TableCell>
                       );
