@@ -4,6 +4,7 @@ import StartCislo from "../assets/images/s_cislo.png"
 import VyslList from "../assets/images/v_listina.png"
 import "./Print.css"
 import { Link } from "react-router-dom";
+import { ScrollText } from "lucide-react";
 
 export default function Print() {
   return (
@@ -19,6 +20,10 @@ export default function Print() {
             <Link to="/tlac/listina" className="print-card">
                 <img src={VyslList} alt="Štartovacia/výsledková listina obrázok" />
                 <span>Tlač štartovacej/výsledkovej listiny</span>
+            </Link>
+            <Link to="/tlac/diplom" className="print-card">
+                <ScrollText className="h-32 w-32 text-amber-600" />
+                <span>Tlač diplomov</span>
             </Link>
         </div>
     </div>

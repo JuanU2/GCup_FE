@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { printAll, printOne, generateAllPDF, generateOnePDF } from "../api/printApi"
+import { printAll, printOne, generateAllPDF, generateOnePDF, generateAllDiplomasPDF, generateOneDiplomaPDF } from "../api/printApi"
 
 function downloadBlob(blob: Blob, filename: string) {
     const url = URL.createObjectURL(blob);
@@ -39,6 +39,28 @@ export const useGenerateOnePDF = (year: string) => {
         mutationFn: (number: string) => generateOnePDF(year, number),
         onSuccess: (blob: Blob, number: string) => {
             downloadBlob(blob, `startovacie-cislo-${number}.pdf`)
+            queryClient.invalidateQueries({ queryKey: ["race"]})
+        }
+    });
+}
+
+export const useGenerateAllDiplomasPDF = (year: string) => {
+    const queryClient = useQueryClient()
+    return useMutation({
+        mutationFn: () => generateAllDiplomasPDF(year),
+        onSuccess: (blob: Blob) => {
+            downloadBlob(blob, `diplomy-${year}.pdf`)
+            queryClient.invalidateQueries({ queryKey: ["race"]})
+        }
+    });
+}
+
+export const useGenerateOneDiplomaPDF = (year: string) => {
+    const queryClient = useQueryClient()
+    return useMutation({
+        mutationFn: (number: string) => generateOneDiplomaPDF(year, number),
+        onSuccess: (blob: Blob, number: string) => {
+            downloadBlob(blob, `diplom-${number}.pdf`)
             queryClient.invalidateQueries({ queryKey: ["race"]})
         }
     });

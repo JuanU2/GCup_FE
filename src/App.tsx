@@ -13,6 +13,7 @@ import Print from './pages/Print'
 import YearSelect from './pages/YearSelect'
 import NumberPrint from './pages/NumberPrint'
 import StartListPrint from './pages/StartListPrint'
+import DiplomaPrint from './pages/DiplomaPrint'
 import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
         }/>
         <Route path="/tlac/cislo/:year" element={<ProtectedRoute><NumberPrint/></ProtectedRoute>}/>
         <Route path="/tlac/listina/:year" element={<StartListPrint/>}/>
+        <Route path="/tlac/diplom/:year" element={<ProtectedRoute><DiplomaPrint/></ProtectedRoute>}/>
 
     </Routes>
     </AuthProvider>
