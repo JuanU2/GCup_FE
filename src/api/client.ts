@@ -12,7 +12,7 @@ export function clearCookie(name: string) {
 }
 
 const apiClient = axios.create({
-  baseURL: 'http://localhost:3000', //'https://g-cup-be.vercel.app',
+  baseURL: 'https://g-cup-be.vercel.app',
   headers: {
     'Content-Type': 'application/json',
   },
