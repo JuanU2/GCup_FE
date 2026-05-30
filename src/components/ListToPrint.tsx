@@ -1,4 +1,4 @@
-import { usePrintOne } from "../hooks/printer";
+import { usePrintOne, useGenerateOnePDF } from "../hooks/printer";
 import { DataGrid } from '@mui/x-data-grid';
 import { useGetRace } from "../hooks/race";
 import { LoaderPinwheel } from "lucide-react";
@@ -6,6 +6,7 @@ import { Button } from "../@/components/ui/button";
 
 export default function ListToPrint(props: { year?: string }) {
   const { mutateAsync: printOne } = usePrintOne(props.year ?? "");
+  const { mutateAsync: generatePDF } = useGenerateOnePDF(props.year ?? "");
   const {isLoading, data: race} = useGetRace(props.year ?? "");
   const columns = [
     {field: 'start_number', headerName: 'Štartovacie č.'},
@@ -13,8 +14,13 @@ export default function ListToPrint(props: { year?: string }) {
     {field:'surname', headerName: 'Priezvisko'},
     {field: 'age', headerName: 'Vek'},
     {field: 'gender', headerName: 'Pohlavie'},
-    {field: 'isPrinted', headerName: 'Tlač'},
-    {field: 'printButton', headerName: '', renderCell: (params: any) => (<Button onClick={async () => await printOne(params.row.start_number)}>Tlačiť</Button>), sortable: false}
+    {field: 'isPrinted', headerName: 'Vytlačené'},
+    {field: 'printButton', headerName: '', renderCell: (params: any) => (
+      <div className="flex gap-2">
+        <Button onClick={async () => await printOne(params.row.start_number)}>Tlačiť</Button>
+        <Button onClick={async () => await generatePDF(params.row.start_number)}>PDF</Button>
+      </div>
+    ), sortable: false, minWidth: 200}
   ]
 
   return (

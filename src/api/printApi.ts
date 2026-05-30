@@ -7,3 +7,13 @@ export const printAll = async (year: string): Promise<undefined> => {
 export const printOne = async (year: string, number: string): Promise<undefined> => {
     return (await apiClient.post(`/print/${number}`, {year, session: getCookie("session")})).data
 }
+
+export const generateAllPDF = async (year: string): Promise<Blob> => {
+    const response = await apiClient.post(`/print/pdf`, {year, session: getCookie("session")}, { responseType: 'blob' })
+    return response.data
+}
+
+export const generateOnePDF = async (year: string, number: string): Promise<Blob> => {
+    const response = await apiClient.post(`/print/pdf/${number}`, {year, session: getCookie("session")}, { responseType: 'blob' })
+    return response.data
+}
